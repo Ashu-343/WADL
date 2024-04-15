@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+body{
+  font-family: 'Barlow', sans-serif;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+.border-left{
+  border-left: 2px solid var(--primary) !important;
+}
+
+.sidebar{
+  top: 0;
+  left : 0;
+  z-index : 100;
+  overflow-y: auto;
+  background-color:#191C24;
+}
+
+.list-group-item {
+     background-color:#191C24;
+     color: lightgrey;
+    }
+.navbar
+{
+  background-color:#191C24;
+}
+.overlay{
+  background-color: rgb(0 0 0 / 45%);
+  z-index: 99;
+}
+
+/* sidebar for small screens */
+@media screen and (max-width: 767px){
+  
+  .sidebar{
+    max-width: 18rem;
+    transform : translateX(-100%);
+    transition : transform 0.4s ease-out;
+  }
+  
+  .sidebar.active{
+    transform : translateX(0);
+  }
+  
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+
+/* Optionally, you can change the color of the arrow text */
+.carousel-control-prev,
+.carousel-control-next {
+  color: #000; /* Set your desired arrow color */
+}
+
+#carouselExample {
+  background-color: lightgrey;
+}
+
+/* Add padding to the main content area */
+main {
+  background-color: lightgrey;
+  padding-top: 20px;
+}
+
+/* Optionally, adjust the margin between the cards */
+.col-md-6,
+.col-lg-4 {
+  margin-bottom: 20px;
+}
+
+article{
+  background-color: rgb(244, 234, 234);
+}
+
+footer{
+  background-color: #191C24;
+  color: white;
+  padding: 0;
+}
+
+.jumbotron
+{
+  background-color: rgb(244, 234, 234);
+  margin-bottom: 0;
+}

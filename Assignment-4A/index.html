@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Swipe and Touch Events</title>
+   <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+   <style>
+      body {
+         font-family: Arial, sans-serif;
+         background-color: #f5f5f5;
+         margin: 0;
+         padding: 0;
+      }
+
+      .ui-content {
+         text-align: center;
+         padding: 2em 0;
+      }
+
+      img {
+         max-width: 80%;
+         height: auto;
+         border-radius: 10px;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+
+      img:hover {
+         transform: scale(1.05);
+         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.5);
+         display: none;
+         justify-content: center;
+         align-items: center;
+         z-index: 999;
+      }
+
+      .overlay-text {
+         color: #fff;
+         font-size: 24px;
+      }
+   </style>
+   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+   <script>
+      $(document).on("pagecreate", "#page1", function() {
+         var images = [
+            "images.jpeg",
+            "images2.jpeg",
+            "images3.jpeg"
+         ];
+         var currentIndex = 0;
+
+         // Swipe event handler
+         $("#swipeImg").on("swipeleft", function() {
+            currentIndex = (currentIndex + 1) % images.length;
+            $("#swipeImg").attr("src", images[currentIndex]);
+            showOverlay("Swipe left");
+         });
+
+         $("#swipeImg").on("swiperight", function() {
+            currentIndex = (currentIndex + 2) % images.length;
+            $("#swipeImg").attr("src", images[currentIndex]);
+            showOverlay("Swipe right");
+         });
+
+         // Tap event handler
+         $("#swipeImg").on("tap", function() {
+          showOverlay("Touch Event is Occured!");
+         });
+
+         // Function to show overlay with text
+         function showOverlay(text) {
+            $(".overlay-text").text(text);
+            $(".overlay").fadeIn(300).delay(1500).fadeOut(300);
+         }
+      });
+   </script>
+</head>
+<body>
+   <div data-role="page" id="page1">
+      <div data-role="header" style="background-color: #333; color: #fff;">
+         <h1>Header</h1>
+      </div>
+
+      <div data-role="main" class="ui-content">
+         <img id="swipeImg" src="Apple-Peek.jpeg" alt="Swipe Image" width="300px" height="300px">
+      </div>
+
+      <div data-role="footer" style="background-color: #333; color: #fff;">
+         <h2>Footer</h2>
+      </div>
+
+      <!-- Overlay for swipe feedback -->
+      <div class="overlay">
+         <div class="overlay-text"></div>
+      </div>
+   </div>
+</body>
+</html>
